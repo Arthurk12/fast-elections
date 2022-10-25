@@ -1,0 +1,63 @@
+.candidateWrapper {
+  max-width: 1200px;
+  margin: 2rem auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-auto-rows: 0.2fr;
+  grid-gap: 1rem;
+  position: relative;
+  padding: 0 3rem;
+}
+
+.candidateInfo {
+  display: flex;
+  flex-flow: column;
+}
+
+.candidateNameNumber {
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+}
+
+.candidateName {
+  font-weight: bold;
+  font-size: 1.7rem;
+}
+
+.candidateSubInfo {
+  font-size: 0.8rem;
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.candidateCoalition {
+  font-size: 0.9rem;
+}
+
+.candidateValidVotes {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.candidateBackground {
+  border: 2px solid black;
+  background-color: lightGray;
+  position: absolute;
+  height: 100%;
+  border-radius: 10px;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  opacity: 25%;
+}
+
+.candidateProgressBar {
+  background-color: black;
+  color: white;
+  height: 100%;
+  border-radius: 10px;
+}
