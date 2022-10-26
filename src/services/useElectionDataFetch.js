@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import axios from 'axios';
 
 const FIRST_TURN = "https://resultados.tse.jus.br/oficial/ele2022/544/dados-simplificados/br/br-c0001-e000544-r.json"
@@ -40,7 +40,7 @@ const useElectionDataFetch = (fetchPeriodically) => {
     payload: [],
   })
 
-  let interval;
+  const interval = useRef();
 
   const fetchData = () => {
     axios.get(API_URL)
@@ -75,10 +75,10 @@ const useElectionDataFetch = (fetchPeriodically) => {
   useEffect(() => {
     fetchData();
 
-    if (fetchPeriodically) interval = setInterval(fetchData, 10*1000);
+    if (fetchPeriodically) interval.current = setInterval(fetchData, 10*1000);
 
     return () => {
-      if(fetchPeriodically) clearInterval(interval);
+      if(fetchPeriodically) clearInterval(interval.current);
     }
   }, []);
 
