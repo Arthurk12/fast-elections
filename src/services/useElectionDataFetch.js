@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import axios from 'axios';
 
 const FIRST_TURN = "https://resultados.tse.jus.br/oficial/ele2022/544/dados-simplificados/br/br-c0001-e000544-r.json"
 const SECOND_TURN = "https://resultados.tse.jus.br/oficial/ele2022/545/dados-simplificados/br/br-c0001-e000545-r.json"
@@ -42,15 +43,15 @@ const useElectionDataFetch = (fetchPeriodically) => {
   let interval;
 
   const fetchData = () => {
-    const controller = new window.AbortController();
-    fetch(API_URL, { signal: controller.signal })
+    axios.get(API_URL)
     .then(response => {
-      if (response.ok) {
-        return response.json();
+      if (response.status === 200) {
+        return response.data;
       }
       throw response;
     })
     .then(data => {
+        console.log('data ', data);
         const candidates = [];
         const candidateInfo = FIELDS.candidate_fields;
         data[FIELDS.candidates].forEach((candidate, index) => {
@@ -67,7 +68,6 @@ const useElectionDataFetch = (fetchPeriodically) => {
         })
 
         setResult({status: 'loaded', apuratedSessions: data[FIELDS.apurated_sessions], lastUpdate: data[FIELDS.time], lastFetch: getCurrentHourMinuteSecond(), payload: candidates});
-        controller.abort();
     })
     .catch(error => setResult({status: 'error', error}));
   }
