@@ -1,11 +1,13 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import axios from 'axios';
 
-const FIRST_TURN = "https://resultados.tse.jus.br/oficial/ele2022/544/dados-simplificados/br/br-c0001-e000544-r.json"
-const SECOND_TURN = "https://resultados.tse.jus.br/oficial/ele2022/545/dados-simplificados/br/br-c0001-e000545-r.json"
+const API_BASE_URL = "https://resultados.tse.jus.br/oficial/";
+
+const FIRST_TURN = "ele2022/544/dados-simplificados/br/br-c0001-e000544-r.json"
+const SECOND_TURN = "ele2022/545/dados-simplificados/br/br-c0001-e000545-r.json"
 
 
-const API_URL = SECOND_TURN;
+const API_URL = API_BASE_URL + SECOND_TURN;
 
 const FIELDS = {
   candidates: 'cand',
@@ -34,13 +36,11 @@ const getCurrentHourMinuteSecond = () => {
   return new Date().toLocaleDateString("pt-BR", {hour: '2-digit', minute: '2-digit', second: '2-digit'}).split(" ")[1];
 }
 
-const useElectionDataFetch = (fetchPeriodically) => {
+const useElectionDataFetch = () => {
   const [result, setResult] = useState({
     status: 'loading',
     payload: [],
   })
-
-  const interval = useRef();
 
   const fetchData = () => {
     axios.get(API_URL)
@@ -51,7 +51,6 @@ const useElectionDataFetch = (fetchPeriodically) => {
       throw response;
     })
     .then(data => {
-        console.log('data ', data);
         const candidates = [];
         const candidateInfo = FIELDS.candidate_fields;
         data[FIELDS.candidates].forEach((candidate, index) => {
@@ -75,10 +74,10 @@ const useElectionDataFetch = (fetchPeriodically) => {
   useEffect(() => {
     fetchData();
 
-    if (fetchPeriodically) interval.current = setInterval(fetchData, 10*1000);
+    const interval = setInterval(fetchData, 10*1000);
 
     return () => {
-      if(fetchPeriodically) clearInterval(interval.current);
+      clearInterval(interval);
     }
   }, []);
 

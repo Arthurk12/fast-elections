@@ -5,7 +5,7 @@ import Status from './components/status/status';
 import Candidates from './components/candidates/candidates';
 
 function App() {
-  const data = useElectionDataFetch(true);
+  const data = useElectionDataFetch();
   return (
     <div>
       <h1>Apuração Eleições 2022</h1>
