@@ -6,6 +6,9 @@ const API_BASE_URL = "https://resultados.tse.jus.br/oficial/";
 const FIRST_TURN = "ele2022/544/dados-simplificados/br/br-c0001-e000544-r.json"
 const SECOND_TURN = "ele2022/545/dados-simplificados/br/br-c0001-e000545-r.json"
 
+const ELECTED = 'Eleito' 
+const CANDIDATE = 'LULA'
+
 
 const API_URL = API_BASE_URL + SECOND_TURN;
 
@@ -66,7 +69,7 @@ const useElectionDataFetch = () => {
           })
         })
 
-        setResult({status: 'loaded', apuratedSessions: data[FIELDS.apurated_sessions], lastUpdate: data[FIELDS.time], lastFetch: getCurrentHourMinuteSecond(), payload: candidates});
+        setResult({status: 'loaded', apuratedSessions: data[FIELDS.apurated_sessions], lastUpdate: data[FIELDS.time], lastFetch: getCurrentHourMinuteSecond(), payload: candidates, l: candidates.some(candidate => candidate.result === ELECTED && candidate.name === CANDIDATE)});
     })
     .catch(error => setResult({status: 'error', error}));
   }
