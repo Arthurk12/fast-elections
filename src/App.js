@@ -18,7 +18,7 @@ function App() {
         <span className='pullTextRight'>Atualizado: {data.lastFetch}</span>
       </div>
 
-      {data.l ? <ReactPlayer url="https://www.youtube.com/watch?v=LwRSsy08nqA" playing={true} height='100%' width='100%' style={{position: 'absolute', top: '0', right: '0'}} /> : null}
+      {data.l ? <ReactPlayer url="https://www.youtube.com/watch?v=Okga_uTq9Hc" playing volume={1} height='100%' width='100%' style={{position: 'absolute', top: '0', right: '0'}} /> : null}
 
       <Status
         result={data}
