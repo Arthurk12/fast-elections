@@ -1,6 +1,13 @@
 {
-  "main.css": "static/css/main.542f478a.css",
-  "main.css.map": "static/css/main.542f478a.css.map",
-  "main.js": "static/js/main.ab4a8fc1.js",
-  "main.js.map": "static/js/main.ab4a8fc1.js.map"
+  "files": {
+    "main.css": "/fast-elections/static/css/main.4b7eed18.css",
+    "main.js": "/fast-elections/static/js/main.8ec9fc7f.js",
+    "index.html": "/fast-elections/index.html",
+    "main.4b7eed18.css.map": "/fast-elections/static/css/main.4b7eed18.css.map",
+    "main.8ec9fc7f.js.map": "/fast-elections/static/js/main.8ec9fc7f.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.4b7eed18.css",
+    "static/js/main.8ec9fc7f.js"
+  ]
 }
