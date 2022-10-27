@@ -1,15 +1,22 @@
-import React from 'react';
+import { React, useState } from 'react';
 import './App.css';
 import useElectionDataFetch from './services/useElectionDataFetch';
 import Status from './components/status/status';
 import Candidates from './components/candidates/candidates';
-import ReactPlayer from 'react-player/youtube';
+import Surprise from './components/surprise/surprise';
 
 function App() {
-  const data = useElectionDataFetch();
+  const [election, setElection] = useState('Presidente');
+  const data = useElectionDataFetch(election);
+
   return (
     <div>
-      <h1>Apuração Eleições 2022</h1>
+        <select name="election" id="election" onChange={(e) => {setElection(e.target.value)}} >
+          <option value="Presidente">Presidente</option>
+          <option value="Governador - RS">Governador - RS</option>
+        </select> 
+
+      <h1>Apuração Eleições 2022 - {election}</h1>
       <div className='clearSection'>
         {data.apuratedSessions}% das seções apuradas
       </div>
@@ -17,9 +24,7 @@ function App() {
         <span>Última informação: {data.lastUpdate}</span>
         <span className='pullTextRight'>Atualizado: {data.lastFetch}</span>
       </div>
-
-      {data.l ? <ReactPlayer url="https://www.youtube.com/watch?v=Okga_uTq9Hc" playing volume={1} height='100%' width='100%' style={{position: 'absolute', top: '0', right: '0'}} /> : null}
-
+      <Surprise candidates={data.payload}/>
       <Status
         result={data}
       />
