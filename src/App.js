@@ -4,6 +4,8 @@ import useElectionDataFetch from './services/useElectionDataFetch';
 import Status from './components/status/status';
 import Candidates from './components/candidates/candidates';
 import Surprise from './components/surprise/surprise';
+import Footer from './components/footer/Footer';
+import GithubCorner from './components/github-corner/GithubCorner';
 
 function App() {
   const [election, setElection] = useState('Presidente');
@@ -11,8 +13,9 @@ function App() {
 
   return (
     <div>
+      <GithubCorner/>
+      
       <h1 className="centralizeText">Apuração Eleições 2022</h1>
-
       <select className="selector" name="election" id="election" onChange={(e) => {setElection(e.target.value)}} >
         <option value="Presidente">Presidente</option>
         <option value="Governador - RS">Governador - RS</option>
@@ -30,6 +33,7 @@ function App() {
         result={data}
       />
       <Candidates candidates={data.payload}/>
+      <Footer/>
     </div>
   );
 }
