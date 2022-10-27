@@ -24,3 +24,19 @@ p,ul,ol {
 .pullTextRight {
   text-align: right;
 }
+
+.selector {
+  background-color: white;
+  border: none;
+  height: 2rem;
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin: auto;
+  display: block;
+  text-align-last: center;
+  border-bottom: solid 1.5px;
+}
+
+.centralizeText {
+  text-align: center
+}

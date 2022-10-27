@@ -11,12 +11,13 @@ function App() {
 
   return (
     <div>
-        <select name="election" id="election" onChange={(e) => {setElection(e.target.value)}} >
-          <option value="Presidente">Presidente</option>
-          <option value="Governador - RS">Governador - RS</option>
-        </select> 
+      <h1 className="centralizeText">Apuração Eleições 2022</h1>
 
-      <h1>Apuração Eleições 2022 - {election}</h1>
+      <select className="selector" name="election" id="election" onChange={(e) => {setElection(e.target.value)}} >
+        <option value="Presidente">Presidente</option>
+        <option value="Governador - RS">Governador - RS</option>
+      </select> 
+
       <div className='clearSection'>
         {data.apuratedSessions}% das seções apuradas
       </div>
