@@ -8,8 +8,8 @@ const PRES_FIRST_TURN = "ele2022/544/dados-simplificados/br/br-c0001-e000544-r.j
 const PRES_SECOND_TURN = "ele2022/545/dados-simplificados/br/br-c0001-e000545-r.json"
 const GOV_RS_SECOND_TURN = "ele2022/547/dados-simplificados/rs/rs-c0003-e000547-r.json"
 
-const ELECTION_TYPE_PRESIDENT = 'Presidente'
-const ELECTION_TYPE_GOVERNOR = 'Governador - RS'
+const ELECTION_TYPE_PRESIDENT = 'pres'
+const ELECTION_TYPE_GOVERNOR = 'gov_rs'
 
 
 const FIELDS = {
@@ -45,8 +45,8 @@ const useElectionDataFetch = (presElection) => {
     payload: [],
   })
 
-  const getApiPath = () => (presElection === ELECTION_TYPE_PRESIDENT ? PRES_SECOND_TURN : GOV_RS_SECOND_TURN);
-  
+  const getApiPath = () => (presElection === ELECTION_TYPE_GOVERNOR ? GOV_RS_SECOND_TURN : PRES_SECOND_TURN);
+ 
   const fetchData = () => {
     axios.get(API_BASE_URL + getApiPath())
     .then(response => {

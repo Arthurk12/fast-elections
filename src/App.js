@@ -8,17 +8,17 @@ import Footer from './components/footer/Footer';
 import GithubCorner from './components/github-corner/GithubCorner';
 
 function App() {
-  const [election, setElection] = useState('Presidente');
+  const [election, setElection] = useState('pres');
   const data = useElectionDataFetch(election);
 
   return (
     <div>
       <GithubCorner/>
       
-      <h1 className="centralizeText">Apuração Eleições 2022</h1>
+      <h1 className='centralizeText'>Apuração Eleições 2022</h1>
       <select className="selector" name="election" id="election" onChange={(e) => {setElection(e.target.value)}} >
-        <option value="Presidente">Presidente</option>
-        <option value="Governador - RS">Governador - RS</option>
+        <option value="pres">Presidente</option>
+        <option value="gov_rs">Governador - RS</option>
       </select> 
 
       <div className='clearSection'>
