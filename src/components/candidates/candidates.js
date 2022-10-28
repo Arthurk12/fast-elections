@@ -6,7 +6,7 @@ const Candidates = ({ candidates }) => {
   if(candidates.length === 0) return null;
 
   return (
-    candidates.map((candidate, i) => (
+    candidates.sort((a,b)=>b.validVotesPercentage-a.validVotesPercentage).map((candidate, i) => (
       <Candidate
         candidate={candidate}
         key={i}
