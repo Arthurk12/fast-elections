@@ -6,6 +6,7 @@ const API_BASE_URL = "https://resultados.tse.jus.br/oficial/";
 
 const PRES_FIRST_TURN = "ele2022/544/dados-simplificados/br/br-c0001-e000544-r.json"
 const PRES_SECOND_TURN = "ele2022/545/dados-simplificados/br/br-c0001-e000545-r.json"
+const GOV_RS_FIRST_TURN = "ele2022/546/dados-simplificados/rs/rs-c0003-e000546-r.json"
 const GOV_RS_SECOND_TURN = "ele2022/547/dados-simplificados/rs/rs-c0003-e000547-r.json"
 
 const ELECTION_TYPE_PRESIDENT = 'pres'
@@ -70,8 +71,7 @@ const useElectionDataFetch = (presElection) => {
           result: candidate[candidateInfo.result],
         })
       })
-
-        setResult({status: 'loaded', apuratedSessions: data[FIELDS.apurated_sessions], lastUpdate: data[FIELDS.time], lastFetch: getCurrentHourMinuteSecond(), payload: candidates});
+      setResult({status: 'loaded', apuratedSessions: data[FIELDS.apurated_sessions], lastUpdate: data[FIELDS.time], lastFetch: getCurrentHourMinuteSecond(), payload: candidates});
     })
     .catch(error => setResult({status: 'error', error}));
   }
