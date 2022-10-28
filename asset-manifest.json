@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/fast-elections/static/css/main.6c183b96.css",
-    "main.js": "/fast-elections/static/js/main.18f60b0a.js",
+    "main.css": "/fast-elections/static/css/main.b87e37b7.css",
+    "main.js": "/fast-elections/static/js/main.1bbf2318.js",
     "index.html": "/fast-elections/index.html",
-    "main.6c183b96.css.map": "/fast-elections/static/css/main.6c183b96.css.map",
-    "main.18f60b0a.js.map": "/fast-elections/static/js/main.18f60b0a.js.map"
+    "main.b87e37b7.css.map": "/fast-elections/static/css/main.b87e37b7.css.map",
+    "main.1bbf2318.js.map": "/fast-elections/static/js/main.1bbf2318.js.map"
   },
   "entrypoints": [
-    "static/css/main.6c183b96.css",
-    "static/js/main.18f60b0a.js"
+    "static/css/main.b87e37b7.css",
+    "static/js/main.1bbf2318.js"
   ]
 }
