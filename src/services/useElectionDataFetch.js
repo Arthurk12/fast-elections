@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axios from 'axios';
 
 // TSE api docs: https://www.tse.jus.br/eleicoes/eleicoes-2022/interessados-na-divulgacao-de-resultados-2022
-const API_BASE_URL = "http://resultados.tse.jus.br/oficial/";
+const API_BASE_URL = "https://resultados.tse.jus.br/oficial/";
 
 const PRES_FIRST_TURN = "ele2022/544/dados-simplificados/br/br-c0001-e000544-r.json"
 const PRES_SECOND_TURN = "ele2022/545/dados-simplificados/br/br-c0001-e000545-r.json"
