@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axios from 'axios';
 
 // TSE api docs: https://www.tse.jus.br/eleicoes/eleicoes-2022/interessados-na-divulgacao-de-resultados-2022
-const API_BASE_URL = "https://resultados.tse.jus.br/oficial/";
+const API_BASE_URL = "http://resultados.tse.jus.br/oficial/";
 
 const PRES_FIRST_TURN = "ele2022/544/dados-simplificados/br/br-c0001-e000544-r.json"
 const PRES_SECOND_TURN = "ele2022/545/dados-simplificados/br/br-c0001-e000545-r.json"
@@ -48,10 +48,16 @@ const useElectionDataFetch = (presElection) => {
 
   const getApiPath = () => (presElection === ELECTION_TYPE_GOVERNOR ? GOV_RS_SECOND_TURN : PRES_SECOND_TURN);
  
+  const config = {
+    headers: {
+      "Content-type": "application/json; charset=UTF-8",
+    },
+  }
+
   const fetchData = () => {
     axios.get(API_BASE_URL + getApiPath())
     .then(response => {
-      if (response.status === 200) {
+      if (response.status === 200 && response.data) {
         return response.data;
       }
       throw response;
@@ -79,7 +85,7 @@ const useElectionDataFetch = (presElection) => {
   useEffect(() => {
     fetchData();
 
-    const interval = setInterval(fetchData, 10*1000);
+    const interval = setInterval(fetchData, 60*1000);
 
     return () => {
       clearInterval(interval);
