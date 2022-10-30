@@ -16,7 +16,7 @@ const ELECTION_TYPE_GOVERNOR = 'gov_rs'
 const FIELDS = {
   candidates: 'cand',
   time: 'ht',
-  apurated_sessions: 'psa',
+  apurated_sessions: 'pst',
   candidate_fields: {
     name: 'nm',
     coalition: 'cc',
