@@ -55,7 +55,7 @@ const useElectionDataFetch = (presElection) => {
   }
 
   const fetchData = () => {
-    axios.get(API_BASE_URL + getApiPath())
+    axios.get(API_BASE_URL + getApiPath(), config)
     .then(response => {
       if (response.status === 200 && response.data) {
         return response.data;
@@ -79,7 +79,11 @@ const useElectionDataFetch = (presElection) => {
       })
       setResult({status: 'loaded', apuratedSessions: data[FIELDS.apurated_sessions], lastUpdate: data[FIELDS.time], lastFetch: getCurrentHourMinuteSecond(), payload: candidates});
     })
-    .catch(error => setResult({status: 'error', error}));
+    .catch((error, t) => {
+      if (error.code !== 'ERR_NETWORK') {
+        setResult({status: 'error', error})
+      }
+    });
   }
 
   useEffect(() => {
