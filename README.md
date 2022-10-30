@@ -1,15 +1,12 @@
-# Getting Started with Create React App
+# Fast Elections
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Projeto para apuração em tempo real das eleições de 2022 utilizando dados disponibilizados na [API oficial do TSE]( https://www.tse.jus.br/eleicoes/eleicoes-2022/interessados-na-divulgacao-de-resultados-2022)
 
-## Available Scripts
+------------
 
-In the project directory, you can run:
 
-### `npm start`
+#### Anotações pra daqui 4 anos
+ - Durante a apuração, a API do TSE passou a responder às requisições sem o header: `Access-Control-Allow-Origin`. Quando este header não esta presente, os navegadores bloqueiam a requisição.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+ 	- ~~Uma possível solução seria armazenar os dados localmente para não depender da API do TSE, que durante a apuração pode ficar malucona.~~
+ 	- Outra ideia é rodar um servidor backend que consulta a API do TSE e serve o front end com os dados.
